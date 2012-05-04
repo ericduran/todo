@@ -4,19 +4,25 @@ var todo = {
   storage : new Lawnchair({name:'todo', record:'todos'}, function() {
     
   }),
-  add : function (text) {
+  add: function (text) {
     todo.storage.save({todo:text}, function (obj) {
       todo.lastInsert = obj;
     });
     return todo.lastInsert;
   },
+  remove: function (id) {
+    todo.storage.remove(id);
+  },
+  
   render: function (obj) {
-    var list = document.getElementById("list");
-    var item = document.createElement('li');
-    var text = document.createTextNode();
-    text.data = obj.todo;
-    item.appendChild(text);
-    list.appendChild(item);
+    var $list = $("#list");
+    var $item = $('<li>');
+    var $removeSpan = $("<span>");
+    $removeSpan.addClass('icon-remove');
+    $item.data('key', obj.key);
+    $item.html(obj.todo);
+    $item.append($removeSpan);
+    $list.append($item);
   },
   clear: function () {
     var list = document.getElementById("list");
@@ -30,3 +36,17 @@ var todo = {
     });
   }
 };
+
+var keys = {
+  prepare: function () {
+    console.log('blah');
+    $(document).keypress(function(e) {
+      if(e.shiftKey && e.keyCode === 63) {
+        $('.help').toggle();
+      }
+    });
+    $(window).on('onkeypress', function (event){
+      console.log(event);
+    })
+  }
+}
