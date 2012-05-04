@@ -39,14 +39,17 @@ var todo = {
 
 var keys = {
   prepare: function () {
-    console.log('blah');
     $(document).keypress(function(e) {
-      if(e.shiftKey && e.keyCode === 63) {
+      // Lets show the help menu on shift + ?
+      if(e.target.nodeName !== 'INPUT' && e.shiftKey && e.keyCode === 63) {
         $('.help').toggle();
       }
     });
-    $(window).on('onkeypress', function (event){
-      console.log(event);
-    })
+
+    // Lets loose focus on ecs
+    $('#text').on('keyup', function(e) {
+      if (e.keyCode === 27) {
+      }
+    });
   }
 }
