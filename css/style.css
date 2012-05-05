@@ -1,3 +1,8 @@
+* {
+  -webkit-box-sizing: border-box; /* <=iOS4, <= Android  2.3 */
+     -moz-box-sizing: border-box; /* FF1+ */
+          box-sizing: border-box; /* Chrome, IE8, Opera, Safari 5.1*/
+}
 
 body {
   background: #D5D5D5;
@@ -5,7 +10,19 @@ body {
 
 .help {
   display: none;
+
+  background: #222;
+  border-radius: 15px;
+  color: white;
+  left: 5%;
+  opacity: .80;
+  position: fixed;
+  top: 5%;
+  width: 90%;
+  z-index: 1;
+  padding: 20px;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -13,6 +30,15 @@ ul {
 
 li {
   margin: 10px;
+  padding-left: 2px;
+}
+
+.s {
+  border-left: 2px solid;
+}
+
+.c {
+  text-decoration:line-through;
 }
 
 [class^="icon-"]:hover,
