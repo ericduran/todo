@@ -39,10 +39,37 @@ var todo = {
 
 var keys = {
   prepare: function () {
+    $('li').first().addClass('s');
     $(document).keypress(function(e) {
-      // Lets show the help menu on shift + ?
-      if(e.target.nodeName !== 'INPUT' && e.shiftKey && e.keyCode === 63) {
-        $('.help').toggle();
+      if(e.target.nodeName !== 'INPUT') {
+        // Lets show the help menu on shift + ?
+        if (e.shiftKey && e.keyCode === 63) {
+          $('.help').toggle();
+        }
+        // 106 = j & 107 = k
+        if (e.keyCode === 106 || e.keyCode == 107) {
+          if (e.keyCode == 106) {
+            if ($('li.s').next()[0] && $('li.s').next()[0].tagName === 'LI')
+              $('li.s').removeClass('s').next().addClass('s'); // Testing no brakets see how I like it.
+          }
+          else {
+            if ($('li.s').prev()[0] && $('li.s').prev()[0].tagName === 'LI')
+              $('li.s').removeClass('s').prev().addClass('s');
+          }
+        }
+        // Delete on d
+        if (e.keyCode === 100) {
+          $item = $('li.s');
+          $item.next().addClass('s');
+          todo.remove($item.data('key'));
+          $item.remove();
+        }
+        // Mark complete on c
+        if (e.keyCode === 99) {
+          $item = $('li.s');
+          $item.next().addClass('s');
+          $item.removeClass('s').addClass('c');
+        }
       }
     });
 
