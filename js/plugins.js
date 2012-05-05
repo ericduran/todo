@@ -80,3 +80,22 @@ var keys = {
     });
   }
 }
+
+var cache = {
+  appCache: window.applicationCache,
+  listeners: function() {
+    cache.appCache.addEventListener('cached', cache.cached, false);
+    cache.appCache.addEventListener('updateready', cache.updateready, false);
+    cache.appCache.addEventListener('obsolete', cache.obsolete, false);
+  },
+  update: function () {
+    cache.appCache.update();
+  },
+  cached: function(e) {
+    // Display Message something like "This site has been cached, which means you can still visit it and add new items to your todo while your on the subway ;-)"
+  },
+  obsolete: function (e) {
+  },
+  updateready: function (e) {
+  }
+}
