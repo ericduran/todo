@@ -5,7 +5,16 @@
 }
 
 body {
-  background: #D5D5D5;
+  background: #eee;
+  font-size: 25px;
+  line-height: 30px;
+  margin: 0 auto;
+  padding: 10px 10px 0;
+}
+
+input {
+  font-size: 25px;
+  width: 100%;
 }
 
 .help {
@@ -31,10 +40,11 @@ ul {
 li {
   margin: 10px;
   padding-left: 2px;
+  border-bottom: 1px dotted;
 }
 
 .s {
-  border-left: 2px solid;
+  background-color: #e3e3e3;
 }
 
 .c {
